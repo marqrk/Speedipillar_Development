@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Titlescreen.unity
+    guid: 070fc1021300dcd41b03c2139c38b93f
+  - enabled: 1
+    path: Assets/Scenes/Tutorial.unity
+    guid: 4e9ab6ac339182b468e065263d207db9
+  - enabled: 0
+    path: Assets/Scenes/TestLevel.unity
+    guid: 7e62183f9c6784c4bad266052aa28ac7
+  - enabled: 1
+    path: Assets/Scenes/Level_1.unity
+    guid: 1a8fdd119a6a7b14886239e63d6b97ef
+  - enabled: 1
+    path: Assets/Scenes/Level_2.unity
+    guid: 6e321e91e2403e94da4dc76ea485390d
+  - enabled: 1
+    path: Assets/Scenes/Level_3.unity
+    guid: 21ff5664bd6738742bb6d5bff4720a33
+  - enabled: 1
+    path: Assets/Scenes/Temporary Credits.unity
+    guid: b3404883f1cc1fc4883b054064a82200
+  m_configObjects:
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: ab60916d14f63354cbd921e749cceb58,
+      type: 2}
