@@ -7,9 +7,14 @@ public class BasicPlayerMovement : MonoBehaviour
 {
     public int AliveState;
     public float jump = 10f;
+    public float acceleration;
     public float speed = 0.1f;
+    public float baseAccel;
     public float baseSpeed = 5.0f;
+
     bool inTutorial = false;
+
+    Rigidbody cubeRigibody;
 
     public GameObject levelName;
 
@@ -21,6 +26,8 @@ public class BasicPlayerMovement : MonoBehaviour
             inTutorial = true;
         }
         AliveState = 0;
+        cubeRigibody = GetComponent<Rigidbody>();
+        cubeRigibody.constraints = RigidbodyConstraints.FreezeRotationZ|RigidbodyConstraints.FreezeRotationZ;
     }
 
     public void HazardDeath()
@@ -37,7 +44,7 @@ public class BasicPlayerMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (inTutorial)
         {
@@ -77,20 +84,48 @@ public class BasicPlayerMovement : MonoBehaviour
                             //Figure out the math on this later to incorporate distance from center as a speed control
                             //float moveMagnitude = Mathf.Sqrt(Mathf.Pow(touchPos.x, 2) * Mathf.Pow(touchPos.z, 2));
 
+                            Quaternion faceAngle = Quaternion.LookRotation(touchPos);
+                            
+                            Vector3 rotation = new Vector3(faceAngle.eulerAngles.x, faceAngle.eulerAngles.y, 0f);
 
-                            Quaternion faceAngle = Quaternion.LookRotation(touchPos, Vector3.up);
+                            rotation.x = Mathf.Clamp(rotation.x, -45f, 45);
 
-                            transform.rotation = faceAngle;
+                            cubeRigibody.transform.rotation = Quaternion.Euler(rotation.x, rotation.y, rotation.z);
+
+
+                            if (cubeRigibody.velocity.magnitude < speed)
+                            {
+                                cubeRigibody.AddForce(transform.forward * acceleration);
+                            }
+
+
+
+                            //cubeRigibody.MovePosition(transform.position + touchPos * speed * Time.deltaTime);
+
+                            //transform.rotation = faceAngle;
 
                             //transform.position += touchPos;
 
-                            transform.Translate(Vector3.forward * speed * Time.deltaTime);
+                            //transform.Translate(Vector3.forward * speed * Time.deltaTime);
 
 
                         }
                         else
                         {
-                            transform.Translate(Vector3.forward * baseSpeed * Time.deltaTime);
+
+                            Vector3 rotation = new Vector3(cubeRigibody.transform.rotation.eulerAngles.x, cubeRigibody.transform.rotation.eulerAngles.y, 0f);
+
+                            rotation.x = Mathf.Clamp(rotation.x, -45f, 45);
+
+                            cubeRigibody.transform.rotation = Quaternion.Euler(rotation.x, rotation.y, rotation.z);
+
+                            if (cubeRigibody.velocity.magnitude < baseSpeed)
+                            {
+                                cubeRigibody.AddForce(transform.forward * baseAccel);
+                            }
+
+
+                            //transform.Translate(Vector3.forward * baseSpeed * Time.deltaTime);
                         }
                         break;
                     }

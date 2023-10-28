@@ -109,6 +109,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90fd8c017bbb6674fb54edb6d6572af9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Acceleration: 50
+  Speed: 15
+  baseAccel: 50
+  baseSpeed: 7
   AliveState: 0
   frontCube: {fileID: 0}
   size: 0.75

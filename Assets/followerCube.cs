@@ -4,10 +4,20 @@ using UnityEngine;
 
 public class followerCube : MonoBehaviour
 {
+    public float Acceleration;
+    public float Speed = 15;
+    public float baseAccel;
+    public float baseSpeed = 7;
     public int AliveState;
+
+    Rigidbody cubeRigibody;
+
+
     public GameObject frontCube;
     public float size = 0.5f;
     float initDistance;
+
+
 
     private void Start()
     {
@@ -19,11 +29,14 @@ public class followerCube : MonoBehaviour
 
         initDistance = Vector3.Distance(transform.position, frontCube.transform.position);
 
+        cubeRigibody = GetComponent<Rigidbody>();
+        cubeRigibody.constraints = RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationZ;
+
         AliveState = 0;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         switch (AliveState)
         {
@@ -35,16 +48,31 @@ public class followerCube : MonoBehaviour
                 {
                     Vector3 randDirection = new Vector3(Random.Range(-5, 5), Random.Range(0, 5), Random.Range(-5, 5));
                     //transform.position = Vector3.MoveTowards(transform.position, randDirection, 5f);
-                    GetComponent<Rigidbody>().velocity = randDirection;
+                    cubeRigibody.velocity = randDirection * 2;
                     AliveState = 2;
                     break;
                 }
                 if(Vector3.Distance(transform.position, frontCube.transform.position) > initDistance)
                 {
-                    Vector3 followMove = Vector3.MoveTowards(transform.position, frontCube.transform.position, 0.1f);
-                    followMove.y = transform.position.y;
-                    transform.position = followMove;
+                    //Vector3 followMove = Vector3.MoveTowards(transform.position, frontCube.transform.position, 0.1f);
+                   // followMove.y = transform.position.y;
+                    //transform.position = followMove;
                     transform.LookAt(frontCube.transform.position);
+
+                    if (Input.touchCount == 0)
+                    {
+                        if (cubeRigibody.velocity.magnitude < baseSpeed)
+                        {
+                            cubeRigibody.MovePosition(transform.position + transform.forward * baseSpeed * Time.deltaTime);
+                        }
+                    }
+                    else
+                    {
+                        if (cubeRigibody.velocity.magnitude < Speed)
+                        {
+                            cubeRigibody.MovePosition(transform.position + transform.forward * Speed * Time.deltaTime);
+                        }
+                    }
                 }
                 break;
             case 2:
