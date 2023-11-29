@@ -843,9 +843,9 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Speedipillar
 
-    Alpha 1.1
+    Alpha 1.2
 
-    Now with Trees!'
+    Facelift Update'
 --- !u!222 &1659196496
 CanvasRenderer:
   m_ObjectHideFlags: 0

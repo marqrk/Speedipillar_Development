@@ -108,6 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 383ca27d45614ff499861cd8c3351733, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 5983698284349876237, guid: 6de45548cbcd6a043b64a788314aff9c, type: 3}
   goalButton: {fileID: 0}
+  nextLevelButton: {fileID: 0}
   victory: {fileID: 0}

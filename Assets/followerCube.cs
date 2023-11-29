@@ -14,9 +14,10 @@ public class followerCube : MonoBehaviour
 
 
     public GameObject frontCube;
+    public GameObject nextCube;
     public float size = 0.5f;
     float initDistance;
-
+    Vector3 velocity = Vector3.zero;
 
 
     private void Start()
@@ -27,7 +28,9 @@ public class followerCube : MonoBehaviour
         sizeVec.z = size;
         transform.localScale = sizeVec;
 
-        initDistance = Vector3.Distance(transform.position, frontCube.transform.position);
+
+
+        initDistance = Vector3.Distance(transform.position, nextCube.transform.position);
 
         cubeRigibody = GetComponent<Rigidbody>();
         cubeRigibody.constraints = RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationZ;
@@ -52,25 +55,38 @@ public class followerCube : MonoBehaviour
                     AliveState = 2;
                     break;
                 }
-                if(Vector3.Distance(transform.position, frontCube.transform.position) > initDistance)
+                else //(Vector3.Distance(transform.position, nextCube.transform.position) > initDistance)
                 {
                     //Vector3 followMove = Vector3.MoveTowards(transform.position, frontCube.transform.position, 0.1f);
-                   // followMove.y = transform.position.y;
+                    // followMove.y = transform.position.y;
                     //transform.position = followMove;
-                    transform.LookAt(frontCube.transform.position);
+
+                    Vector3 target = Vector3.zero;
+
+                    transform.LookAt(nextCube.transform.position);
+                    if (nextCube.name == "Speedipillar_Head")
+                    {
+                        target = nextCube.transform.TransformPoint(new Vector3(0, 0.5f, -1.75f));
+                    }
+                    else
+                    {
+                        target = nextCube.transform.TransformPoint(new Vector3(0, 0, -1.5f));
+                    }
 
                     if (Input.touchCount == 0)
                     {
                         if (cubeRigibody.velocity.magnitude < baseSpeed)
                         {
-                            cubeRigibody.MovePosition(transform.position + transform.forward * baseSpeed * Time.deltaTime);
+                            //cubeRigibody.MovePosition(transform.position + transform.forward * baseSpeed * Time.deltaTime);
+                            cubeRigibody.position = Vector3.SmoothDamp(cubeRigibody.position, target, ref velocity, Time.deltaTime, baseSpeed);
                         }
                     }
                     else
                     {
                         if (cubeRigibody.velocity.magnitude < Speed)
                         {
-                            cubeRigibody.MovePosition(transform.position + transform.forward * Speed * Time.deltaTime);
+                            //cubeRigibody.MovePosition(transform.position + transform.forward * Speed * Time.deltaTime);
+                            cubeRigibody.position = Vector3.SmoothDamp(cubeRigibody.position, target, ref velocity, Time.deltaTime, Speed);
                         }
                     }
                 }

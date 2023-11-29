@@ -27,7 +27,7 @@ public class BasicPlayerMovement : MonoBehaviour
         }
         AliveState = 0;
         cubeRigibody = GetComponent<Rigidbody>();
-        cubeRigibody.constraints = RigidbodyConstraints.FreezeRotationZ|RigidbodyConstraints.FreezeRotationZ;
+        cubeRigibody.constraints = RigidbodyConstraints.FreezeRotationZ|RigidbodyConstraints.FreezeRotationY|RigidbodyConstraints.FreezeRotationX;
     }
 
     public void HazardDeath()

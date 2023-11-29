@@ -108,6 +108,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7c02a5481ec8934c82a02420438523c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 635594691827847706, guid: aa7aa4398f2e6a94a9a000d7d827284d, type: 3}
+  player: {fileID: 5983698284349876237, guid: 6de45548cbcd6a043b64a788314aff9c, type: 3}
   deathButton: {fileID: 0}
   failure: {fileID: 0}
