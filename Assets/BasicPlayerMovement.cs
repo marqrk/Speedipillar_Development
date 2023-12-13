@@ -11,7 +11,7 @@ public class BasicPlayerMovement : MonoBehaviour
     public float speed = 0.1f;
     public float baseAccel;
     public float baseSpeed = 5.0f;
-
+    public float gravity;
     bool inTutorial = false;
 
     Rigidbody cubeRigibody;
@@ -98,7 +98,8 @@ public class BasicPlayerMovement : MonoBehaviour
                                 cubeRigibody.AddForce(transform.forward * acceleration);
                             }
 
-
+                            // Might use this later for a gravity changing level
+                            //cubeRigibody.AddForce(Vector3.down * gravity * cubeRigibody.mass);
 
                             //cubeRigibody.MovePosition(transform.position + touchPos * speed * Time.deltaTime);
 
@@ -124,12 +125,15 @@ public class BasicPlayerMovement : MonoBehaviour
                                 cubeRigibody.AddForce(transform.forward * baseAccel);
                             }
 
+                            //cubeRigibody.AddForce(Vector3.down * gravity * cubeRigibody.mass);
 
                             //transform.Translate(Vector3.forward * baseSpeed * Time.deltaTime);
                         }
                         break;
                     }
                 case 2:
+                    cubeRigibody.constraints = RigidbodyConstraints.None;
+                    break;
                 case 3:
                     break;
             }

@@ -25,4 +25,13 @@ public class HazardWallScript : MonoBehaviour
             move.AliveState = 2;
         }
     }
+    private void OnTriggerEnter(Collider other)
+    {
+     if(other.gameObject.name == player.name)
+        {
+            deathButton.SetActive(true);
+            failure.SetActive(true);
+            move.AliveState = 2;
+        }   
+    }
 }
