@@ -8,3 +8,5 @@
 11/29/2023 - Alpha 1.2 A smaller update for the new player model. Also includes an update to the follower script to make their movement smoother and eliminate the jumpiness that was more noticable with the new more complex model as well as changes to level 5 to make the path to follow clearer.
 
 12/13/2023 - Alpha 1.2.1 - A small update, beginnings of work on Level 6 and some tinkering with gravity manipulation.
+
+12/20/20203 - Alpha 1.2.2 -  Finished Level 6, added a arrows to help clarity, and added graphics to the menus, also added a Level Select menu to make it easier to play specific levels.
