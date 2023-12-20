@@ -8,6 +8,7 @@ public class GoalWallScript : MonoBehaviour
     public GameObject goalButton;
     public GameObject nextLevelButton;
     public GameObject victory;
+    public GameObject LvlSelectButton;
     // Start is called before the first frame update
     BasicPlayerMovement move = null;
 
@@ -25,6 +26,7 @@ public class GoalWallScript : MonoBehaviour
             goalButton.SetActive(true);
             victory.SetActive(true);
             nextLevelButton.SetActive(true);
+            LvlSelectButton.SetActive(true);
             move.AliveState = 3;
         }
     }

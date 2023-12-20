@@ -2082,6 +2082,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3723036066992160786, guid: 13b544bedfdaefd4782f7f4aca60b101,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1252075033}
+    - target: {fileID: 3723036066992160786, guid: 13b544bedfdaefd4782f7f4aca60b101,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LevelSelect
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723036066992160786, guid: 13b544bedfdaefd4782f7f4aca60b101,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: BasicPlayerMovement, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723036066992160786, guid: 13b544bedfdaefd4782f7f4aca60b101,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4146441514159853018, guid: 13b544bedfdaefd4782f7f4aca60b101,
         type: 3}
       propertyPath: m_Name
@@ -2222,8 +2242,19 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: NextLevel
       objectReference: {fileID: 0}
+    - target: {fileID: 9076471651774082433, guid: 13b544bedfdaefd4782f7f4aca60b101,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13b544bedfdaefd4782f7f4aca60b101, type: 3}
+--- !u!1 &755013084 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5504723484103876663, guid: 13b544bedfdaefd4782f7f4aca60b101,
+    type: 3}
+  m_PrefabInstance: {fileID: 755013083}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &759691389
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3943,6 +3974,11 @@ PrefabInstance:
       propertyPath: goalButton
       value: 
       objectReference: {fileID: 1867025477}
+    - target: {fileID: 2778207874772829460, guid: 59d719537f18fb942af11f9da16daeb4,
+        type: 3}
+      propertyPath: LvlSelectButton
+      value: 
+      objectReference: {fileID: 755013084}
     - target: {fileID: 2778207874772829460, guid: 59d719537f18fb942af11f9da16daeb4,
         type: 3}
       propertyPath: nextLevelButton

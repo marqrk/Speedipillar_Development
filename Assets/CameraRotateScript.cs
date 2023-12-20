@@ -45,8 +45,8 @@ public class CameraRotateScript : MonoBehaviour
                 transform.LookAt(playerObj.transform.position);
                 Vector3 followPos = playerObj.transform.position;
 
-                followPos.z = playerObj.transform.position.z - 5;
-                followPos.y = playerObj.transform.position.y + 2f;
+                followPos.z = playerObj.transform.position.z - 6f;
+                followPos.y = playerObj.transform.position.y + 3f;
 
                 transform.position = followPos;
 

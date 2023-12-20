@@ -30,6 +30,7 @@ public class BasicPlayerMovement : MonoBehaviour
         cubeRigibody.constraints = RigidbodyConstraints.FreezeRotationZ|RigidbodyConstraints.FreezeRotationY|RigidbodyConstraints.FreezeRotationX;
     }
 
+    public void LevelSelect() { SceneManager.LoadScene(2); }
     public void HazardDeath()
     {
         if(AliveState == 2 || AliveState == 3)

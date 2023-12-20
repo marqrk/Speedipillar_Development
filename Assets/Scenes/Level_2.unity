@@ -217,6 +217,11 @@ PrefabInstance:
       objectReference: {fileID: 1158664741}
     - target: {fileID: 2778207874772829460, guid: 59d719537f18fb942af11f9da16daeb4,
         type: 3}
+      propertyPath: LvlSelectButton
+      value: 
+      objectReference: {fileID: 1022581880}
+    - target: {fileID: 2778207874772829460, guid: 59d719537f18fb942af11f9da16daeb4,
+        type: 3}
       propertyPath: nextLevelButton
       value: 
       objectReference: {fileID: 473466725}
@@ -499,6 +504,11 @@ PrefabInstance:
       propertyPath: goalButton
       value: 
       objectReference: {fileID: 1158664741}
+    - target: {fileID: 2778207874772829460, guid: 59d719537f18fb942af11f9da16daeb4,
+        type: 3}
+      propertyPath: LvlSelectButton
+      value: 
+      objectReference: {fileID: 1022581880}
     - target: {fileID: 2778207874772829460, guid: 59d719537f18fb942af11f9da16daeb4,
         type: 3}
       propertyPath: nextLevelButton
@@ -1055,6 +1065,11 @@ PrefabInstance:
       propertyPath: goalButton
       value: 
       objectReference: {fileID: 1158664741}
+    - target: {fileID: 2778207874772829460, guid: 59d719537f18fb942af11f9da16daeb4,
+        type: 3}
+      propertyPath: LvlSelectButton
+      value: 
+      objectReference: {fileID: 1022581880}
     - target: {fileID: 2778207874772829460, guid: 59d719537f18fb942af11f9da16daeb4,
         type: 3}
       propertyPath: nextLevelButton
@@ -1626,6 +1641,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3723036066992160786, guid: 13b544bedfdaefd4782f7f4aca60b101,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 273958348}
+    - target: {fileID: 3723036066992160786, guid: 13b544bedfdaefd4782f7f4aca60b101,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LevelSelect
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723036066992160786, guid: 13b544bedfdaefd4782f7f4aca60b101,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: BasicPlayerMovement, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723036066992160786, guid: 13b544bedfdaefd4782f7f4aca60b101,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4146441514159853018, guid: 13b544bedfdaefd4782f7f4aca60b101,
         type: 3}
       propertyPath: m_Name
@@ -1771,11 +1806,22 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: NextLevel
       objectReference: {fileID: 0}
+    - target: {fileID: 9076471651774082433, guid: 13b544bedfdaefd4782f7f4aca60b101,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13b544bedfdaefd4782f7f4aca60b101, type: 3}
 --- !u!224 &1022581879 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4146441514159853022, guid: 13b544bedfdaefd4782f7f4aca60b101,
+    type: 3}
+  m_PrefabInstance: {fileID: 1022581878}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1022581880 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5504723484103876663, guid: 13b544bedfdaefd4782f7f4aca60b101,
     type: 3}
   m_PrefabInstance: {fileID: 1022581878}
   m_PrefabAsset: {fileID: 0}
