@@ -9,4 +9,7 @@
 
 12/13/2023 - Alpha 1.2.1 - A small update, beginnings of work on Level 6 and some tinkering with gravity manipulation.
 
-2/19/2023 - Alpha 1.3 - Added the first boss fight of the game, the Ladybug boss
+12/20/20203 - Alpha 1.2.2 -  Finished Level 6, added a arrows to help clarity, and added graphics to the menus, also added a Level Select menu to make it easier to play specific levels.
+
+2/19/2024 - Alpha 1.3 - Added the first boss fight of the game, the Ladybug boss
+
