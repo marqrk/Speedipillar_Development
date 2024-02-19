@@ -21,7 +21,7 @@ public class BasicPlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(SceneManager.GetActiveScene().name == "Tutorial")
+        if (SceneManager.GetActiveScene().name == "Tutorial")
         {
             inTutorial = true;
         }
@@ -33,7 +33,7 @@ public class BasicPlayerMovement : MonoBehaviour
     public void LevelSelect() { SceneManager.LoadScene(2); }
     public void HazardDeath()
     {
-        if(AliveState == 2 || AliveState == 3)
+        if(AliveState == 2 || AliveState == 3 || AliveState == 4)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
@@ -136,6 +136,12 @@ public class BasicPlayerMovement : MonoBehaviour
                     cubeRigibody.constraints = RigidbodyConstraints.None;
                     break;
                 case 3:
+                    break;
+                case 4:
+                    if (cubeRigibody.velocity.magnitude < speed)
+                    {
+                        cubeRigibody.AddForce(transform.forward * baseAccel);
+                    }
                     break;
             }
         }

@@ -6,6 +6,7 @@ public class CameraRotateScript : MonoBehaviour
 {
     public GameObject playerObj;
     public bool overheadCam;
+    public bool OHBoss;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,21 +18,43 @@ public class CameraRotateScript : MonoBehaviour
     {
         if (overheadCam)
         {
-            if (playerObj.GetComponent<BasicPlayerMovement>().AliveState == 2)
+            if (OHBoss)
             {
-                transform.LookAt(playerObj.transform.position);
+                if (playerObj.GetComponent<BasicPlayerMovement>().AliveState == 2)
+                {
+                    transform.LookAt(playerObj.transform.position);
+                }
+                else
+                {
+                    transform.LookAt(playerObj.transform.position);
+                    Vector3 followPos = playerObj.transform.position;
+
+                    followPos.z = playerObj.transform.position.z - 3;
+                    followPos.y = playerObj.transform.position.y + 16f;
+
+                    Vector3 SmoothFollowPos = Vector3.Lerp(transform.position, followPos, 15f * Time.deltaTime);
+
+                    transform.position = followPos;
+                }
             }
             else
             {
-                transform.LookAt(playerObj.transform.position);
-                Vector3 followPos = playerObj.transform.position;
+                if (playerObj.GetComponent<BasicPlayerMovement>().AliveState == 2)
+                {
+                    transform.LookAt(playerObj.transform.position);
+                }
+                else
+                {
+                    transform.LookAt(playerObj.transform.position);
+                    Vector3 followPos = playerObj.transform.position;
 
-                followPos.z = playerObj.transform.position.z - 1;
-                followPos.y = playerObj.transform.position.y + 8f;
+                    followPos.z = playerObj.transform.position.z - 1;
+                    followPos.y = playerObj.transform.position.y + 8f;
 
-                Vector3 SmoothFollowPos = Vector3.Lerp(transform.position, followPos, 15f * Time.deltaTime);
+                    Vector3 SmoothFollowPos = Vector3.Lerp(transform.position, followPos, 15f * Time.deltaTime);
 
-                transform.position = followPos;
+                    transform.position = followPos;
+                }
             }
         }
         else

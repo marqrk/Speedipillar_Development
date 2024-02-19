@@ -514,7 +514,7 @@ PrefabInstance:
         type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 375811498}
     - target: {fileID: 2778207874772829460, guid: 59d719537f18fb942af11f9da16daeb4,
         type: 3}
       propertyPath: victory
@@ -527,6 +527,11 @@ PrefabInstance:
       objectReference: {fileID: 1836739815}
     - target: {fileID: 2778207874772829460, guid: 59d719537f18fb942af11f9da16daeb4,
         type: 3}
+      propertyPath: LvlSelectButton
+      value: 
+      objectReference: {fileID: 325271930}
+    - target: {fileID: 2778207874772829460, guid: 59d719537f18fb942af11f9da16daeb4,
+        type: 3}
       propertyPath: nextLevelButton
       value: 
       objectReference: {fileID: 330348800}
@@ -537,6 +542,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59d719537f18fb942af11f9da16daeb4, type: 3}
+--- !u!1 &325271930 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5504723484103876663, guid: 13b544bedfdaefd4782f7f4aca60b101,
+    type: 3}
+  m_PrefabInstance: {fileID: 2025388685}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &330348800 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5469339941089335415, guid: 13b544bedfdaefd4782f7f4aca60b101,
@@ -2186,6 +2197,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9076471651774082433, guid: 13b544bedfdaefd4782f7f4aca60b101,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13b544bedfdaefd4782f7f4aca60b101, type: 3}

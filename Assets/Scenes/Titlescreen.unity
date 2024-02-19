@@ -845,9 +845,9 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Speedipillar
 
-    Alpha 1.2
+    Alpha 1.3
 
-    Facelift Update'
+    Boss Update'
 --- !u!222 &1659196496
 CanvasRenderer:
   m_ObjectHideFlags: 0
