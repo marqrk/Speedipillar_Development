@@ -2,25 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using System.IO;
 public class BasicPlayerMovement : MonoBehaviour
 {
     public int AliveState;
-    public float jump = 10f;
     public float acceleration;
     public float speed = 0.1f;
     public float baseAccel;
     public float baseSpeed = 5.0f;
     public float gravity;
+
+    public GameObject ControlStick;
+    public GameObject ControlStickBG;
+
     bool inTutorial = false;
 
-    Rigidbody cubeRigibody;
+    public Rigidbody cubeRigibody;
 
     public GameObject levelName;
+
+    public GameObject JsonHandler;
+
+    public bool usingStick;
 
     // Start is called before the first frame update
     void Start()
     {
+        usingStick = JsonHandler.GetComponent<JsonHandlerScript>().playerSettings.StickControls;
+        
         if (SceneManager.GetActiveScene().name == "Tutorial")
         {
             inTutorial = true;
@@ -28,6 +37,11 @@ public class BasicPlayerMovement : MonoBehaviour
         AliveState = 0;
         cubeRigibody = GetComponent<Rigidbody>();
         cubeRigibody.constraints = RigidbodyConstraints.FreezeRotationZ|RigidbodyConstraints.FreezeRotationY|RigidbodyConstraints.FreezeRotationX;
+        if (!usingStick)
+        {
+            ControlStick.SetActive(false);
+            ControlStickBG.SetActive(false);
+        }
     }
 
     public void LevelSelect() { SceneManager.LoadScene(2); }
@@ -52,98 +66,139 @@ public class BasicPlayerMovement : MonoBehaviour
         }
         else
         {
-            switch (AliveState)
+            if (usingStick)
             {
-                case 0:
-                    if (Input.touchCount > 0) { 
-                        AliveState = 1; 
-                        levelName.SetActive(false);
-                    }
-                    break;
-                case 1:
-                    if (transform.position.y < -50)
-                    {
-                        AliveState = 2;
-                        HazardDeath();
-                        break;
-                    }
-                    else
-                    {
+                switch (AliveState)
+                {
+                    case 0:
                         if (Input.touchCount > 0)
                         {
-                            Touch touch = Input.GetTouch(0);
-                            Vector3 touchPos = Camera.main.ScreenToViewportPoint(touch.position);
-
-                            //convert the screen coordinates of the touch to +/- axis centered on the middle of the screen
-                            touchPos.z = touchPos.y;
-                            touchPos.y = 0f;
-                            touchPos.x -= 0.5f;
-                            //touchPos.x *= speed;
-                            touchPos.z -= 0.5f;
-                            //touchPos.z *= speed;
-
-                            //Figure out the math on this later to incorporate distance from center as a speed control
-                            //float moveMagnitude = Mathf.Sqrt(Mathf.Pow(touchPos.x, 2) * Mathf.Pow(touchPos.z, 2));
-
-                            Quaternion faceAngle = Quaternion.LookRotation(touchPos);
-                            
-                            Vector3 rotation = new Vector3(faceAngle.eulerAngles.x, faceAngle.eulerAngles.y, 0f);
-
-                            rotation.x = Mathf.Clamp(rotation.x, -45f, 45);
-
-                            cubeRigibody.transform.rotation = Quaternion.Euler(rotation.x, rotation.y, rotation.z);
-
-
-                            if (cubeRigibody.velocity.magnitude < speed)
-                            {
-                                cubeRigibody.AddForce(transform.forward * acceleration);
-                            }
-
-                            // Might use this later for a gravity changing level
-                            //cubeRigibody.AddForce(Vector3.down * gravity * cubeRigibody.mass);
-
-                            //cubeRigibody.MovePosition(transform.position + touchPos * speed * Time.deltaTime);
-
-                            //transform.rotation = faceAngle;
-
-                            //transform.position += touchPos;
-
-                            //transform.Translate(Vector3.forward * speed * Time.deltaTime);
-
-
+                            AliveState = 1;
+                            levelName.SetActive(false);
+                        }
+                        break;
+                    case 1:
+                        if (transform.position.y < -50)
+                        {
+                            AliveState = 2;
+                            HazardDeath();
+                            break;
                         }
                         else
                         {
-
-                            Vector3 rotation = new Vector3(cubeRigibody.transform.rotation.eulerAngles.x, cubeRigibody.transform.rotation.eulerAngles.y, 0f);
-
-                            rotation.x = Mathf.Clamp(rotation.x, -45f, 45);
-
-                            cubeRigibody.transform.rotation = Quaternion.Euler(rotation.x, rotation.y, rotation.z);
-
-                            if (cubeRigibody.velocity.magnitude < baseSpeed)
-                            {
-                                cubeRigibody.AddForce(transform.forward * baseAccel);
-                            }
-
-                            //cubeRigibody.AddForce(Vector3.down * gravity * cubeRigibody.mass);
-
-                            //transform.Translate(Vector3.forward * baseSpeed * Time.deltaTime);
+                            //Movement for Controlstick handled in ControlStickScript.cs
+                            break;
+                        }
+                    case 2:
+                        cubeRigibody.constraints = RigidbodyConstraints.None;
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        if (cubeRigibody.velocity.magnitude < speed)
+                        {
+                            cubeRigibody.AddForce(transform.forward * baseAccel);
                         }
                         break;
-                    }
-                case 2:
-                    cubeRigibody.constraints = RigidbodyConstraints.None;
-                    break;
-                case 3:
-                    break;
-                case 4:
-                    if (cubeRigibody.velocity.magnitude < speed)
-                    {
-                        cubeRigibody.AddForce(transform.forward * baseAccel);
-                    }
-                    break;
+                }
             }
+            else
+            {
+                switch (AliveState)
+                {
+                    case 0:
+                        if (Input.touchCount > 0)
+                        {
+                            AliveState = 1;
+                            levelName.SetActive(false);
+                        }
+                        break;
+                    case 1:
+                        if (transform.position.y < -50)
+                        {
+                            AliveState = 2;
+                            HazardDeath();
+                            break;
+                        }
+                        else
+                        {
+                            if (Input.touchCount > 0)
+                            {
+                                Touch touch = Input.GetTouch(0);
+                                Vector3 touchPos = Camera.main.ScreenToViewportPoint(touch.position);
+
+                                //convert the screen coordinates of the touch to +/- axis centered on the middle of the screen
+                                touchPos.z = touchPos.y;
+                                touchPos.y = 0f;
+                                touchPos.x -= 0.5f;
+                                //touchPos.x *= speed;
+                                touchPos.z -= 0.5f;
+                                //touchPos.z *= speed;
+
+                                //Figure out the math on this later to incorporate distance from center as a speed control
+                                //float moveMagnitude = Mathf.Sqrt(Mathf.Pow(touchPos.x, 2) * Mathf.Pow(touchPos.z, 2));
+
+                                Quaternion faceAngle = Quaternion.LookRotation(touchPos);
+
+                                Vector3 rotation = new Vector3(faceAngle.eulerAngles.x, faceAngle.eulerAngles.y, 0f);
+
+                                rotation.x = Mathf.Clamp(rotation.x, -45f, 45);
+
+                                cubeRigibody.transform.rotation = Quaternion.Euler(rotation.x, rotation.y, rotation.z);
+
+
+                                if (cubeRigibody.velocity.magnitude < speed)
+                                {
+                                    cubeRigibody.AddForce(transform.forward * acceleration);
+                                }
+
+                                // Might use this later for a gravity changing level
+                                //cubeRigibody.AddForce(Vector3.down * gravity * cubeRigibody.mass);
+
+                                //cubeRigibody.MovePosition(transform.position + touchPos * speed * Time.deltaTime);
+
+                                //transform.rotation = faceAngle;
+
+                                //transform.position += touchPos;
+
+                                //transform.Translate(Vector3.forward * speed * Time.deltaTime);
+
+
+                            }
+                            else
+                            {
+
+                                Vector3 rotation = new Vector3(cubeRigibody.transform.rotation.eulerAngles.x, cubeRigibody.transform.rotation.eulerAngles.y, 0f);
+
+                                rotation.x = Mathf.Clamp(rotation.x, -45f, 45);
+
+                                cubeRigibody.transform.rotation = Quaternion.Euler(rotation.x, rotation.y, rotation.z);
+
+                                if (cubeRigibody.velocity.magnitude < baseSpeed)
+                                {
+                                    cubeRigibody.AddForce(transform.forward * baseAccel);
+                                }
+
+                                //cubeRigibody.AddForce(Vector3.down * gravity * cubeRigibody.mass);
+
+                                //transform.Translate(Vector3.forward * baseSpeed * Time.deltaTime);
+                            }
+                            break;
+                        }
+                    case 2:
+                        cubeRigibody.constraints = RigidbodyConstraints.None;
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        if (cubeRigibody.velocity.magnitude < speed)
+                        {
+                            cubeRigibody.AddForce(transform.forward * baseAccel);
+                        }
+                        break;
+                }
+            }
+        
         }
         
     }

@@ -13,3 +13,4 @@
 
 2/19/2024 - Alpha 1.3 - Added the first boss fight of the game, the Ladybug boss
 
+2/23/2024 - Alpha 1.3.1 - Added optional control stick controls and set up the framework for Json information tracking. 
