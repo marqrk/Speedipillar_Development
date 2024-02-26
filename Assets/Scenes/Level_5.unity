@@ -583,6 +583,11 @@ PrefabInstance:
       objectReference: {fileID: 1701799038}
     - target: {fileID: 5238395146073365383, guid: c1b691274c2c842479523510130ad4f8,
         type: 3}
+      propertyPath: returnLvl
+      value: 
+      objectReference: {fileID: 755013088}
+    - target: {fileID: 5238395146073365383, guid: c1b691274c2c842479523510130ad4f8,
+        type: 3}
       propertyPath: deathButton
       value: 
       objectReference: {fileID: 256051940}
@@ -2082,6 +2087,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1526527482634834098, guid: 13b544bedfdaefd4782f7f4aca60b101,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 759691390}
+    - target: {fileID: 1526527482634834098, guid: 13b544bedfdaefd4782f7f4aca60b101,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LevelSelect
+      objectReference: {fileID: 0}
     - target: {fileID: 3723036066992160786, guid: 13b544bedfdaefd4782f7f4aca60b101,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2235,13 +2250,18 @@ PrefabInstance:
     - target: {fileID: 4561204430939954826, guid: 13b544bedfdaefd4782f7f4aca60b101,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 5205975283587676306, guid: 13b544bedfdaefd4782f7f4aca60b101,
         type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1252075032}
+    - target: {fileID: 7904723884818881298, guid: 13b544bedfdaefd4782f7f4aca60b101,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 8597006948296906151, guid: 13b544bedfdaefd4782f7f4aca60b101,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2255,7 +2275,7 @@ PrefabInstance:
     - target: {fileID: 9076471651774082433, guid: 13b544bedfdaefd4782f7f4aca60b101,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13b544bedfdaefd4782f7f4aca60b101, type: 3}
@@ -2280,6 +2300,12 @@ GameObject:
 --- !u!1 &755013087 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4146441514159853018, guid: 13b544bedfdaefd4782f7f4aca60b101,
+    type: 3}
+  m_PrefabInstance: {fileID: 755013083}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &755013088 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6874402158091267673, guid: 13b544bedfdaefd4782f7f4aca60b101,
     type: 3}
   m_PrefabInstance: {fileID: 755013083}
   m_PrefabAsset: {fileID: 0}
@@ -4036,6 +4062,16 @@ PrefabInstance:
       objectReference: {fileID: 1867025477}
     - target: {fileID: 2778207874772829460, guid: 59d719537f18fb942af11f9da16daeb4,
         type: 3}
+      propertyPath: CurrentLevel
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2778207874772829460, guid: 59d719537f18fb942af11f9da16daeb4,
+        type: 3}
+      propertyPath: jsonHandlerObj
+      value: 
+      objectReference: {fileID: 755013087}
+    - target: {fileID: 2778207874772829460, guid: 59d719537f18fb942af11f9da16daeb4,
+        type: 3}
       propertyPath: LvlSelectButton
       value: 
       objectReference: {fileID: 755013084}
@@ -5245,6 +5281,11 @@ PrefabInstance:
       objectReference: {fileID: 1701799038}
     - target: {fileID: 5238395146073365383, guid: c1b691274c2c842479523510130ad4f8,
         type: 3}
+      propertyPath: returnLvl
+      value: 
+      objectReference: {fileID: 755013088}
+    - target: {fileID: 5238395146073365383, guid: c1b691274c2c842479523510130ad4f8,
+        type: 3}
       propertyPath: deathButton
       value: 
       objectReference: {fileID: 256051940}
@@ -5623,6 +5664,11 @@ PrefabInstance:
       propertyPath: failure
       value: 
       objectReference: {fileID: 1701799038}
+    - target: {fileID: 5238395146073365383, guid: c1b691274c2c842479523510130ad4f8,
+        type: 3}
+      propertyPath: returnLvl
+      value: 
+      objectReference: {fileID: 755013088}
     - target: {fileID: 5238395146073365383, guid: c1b691274c2c842479523510130ad4f8,
         type: 3}
       propertyPath: deathButton
@@ -6075,6 +6121,11 @@ PrefabInstance:
       objectReference: {fileID: 1701799038}
     - target: {fileID: 5238395146073365383, guid: c1b691274c2c842479523510130ad4f8,
         type: 3}
+      propertyPath: returnLvl
+      value: 
+      objectReference: {fileID: 755013088}
+    - target: {fileID: 5238395146073365383, guid: c1b691274c2c842479523510130ad4f8,
+        type: 3}
       propertyPath: deathButton
       value: 
       objectReference: {fileID: 256051940}
@@ -6371,6 +6422,11 @@ PrefabInstance:
       propertyPath: failure
       value: 
       objectReference: {fileID: 1701799038}
+    - target: {fileID: 5238395146073365383, guid: c1b691274c2c842479523510130ad4f8,
+        type: 3}
+      propertyPath: returnLvl
+      value: 
+      objectReference: {fileID: 755013088}
     - target: {fileID: 5238395146073365383, guid: c1b691274c2c842479523510130ad4f8,
         type: 3}
       propertyPath: deathButton

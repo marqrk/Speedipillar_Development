@@ -50,8 +50,6 @@ public class ControlStickScript : MonoBehaviour
                     touchStartPos = Vector3.zero;
                 }
 
-                Debug.Log("Initial TouchPos: " + touchStartPos);
-
 
                 if(touchStartPos.x < -220f && touchStartPos.x > -360f && touchStartPos.y < -20f && touchStartPos.y > -170f)
                 {

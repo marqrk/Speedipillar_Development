@@ -9,6 +9,9 @@ public class LadybugBossAi : MonoBehaviour
     public GameObject player;
     public GameObject LadybugHead;
 
+    public GameObject jsonHandlerObj;
+    private JsonHandlerScript json;
+
     public float speed = 15f;
 
     public GameObject goalButton;
@@ -18,7 +21,7 @@ public class LadybugBossAi : MonoBehaviour
 
     public int Health = 4;
 
-
+    public int CurrentLevel;
 
     Vector3 StartingPos;
 
@@ -28,6 +31,9 @@ public class LadybugBossAi : MonoBehaviour
     void Start()
     {
         StartingPos = transform.position;
+
+        json = jsonHandlerObj.GetComponent<JsonHandlerScript>();
+
     }
 
     // Update is called once per frame
@@ -40,6 +46,8 @@ public class LadybugBossAi : MonoBehaviour
             nextLevelButton.SetActive(true);
             LvlSelectButton.SetActive(true);
             player.GetComponent<BasicPlayerMovement>().AliveState = 3;
+
+            json.UpdatePlayerSave(CurrentLevel);
         }
         if (player.GetComponent<BasicPlayerMovement>().AliveState == 1 || player.GetComponent<BasicPlayerMovement>().AliveState == 4)
         {

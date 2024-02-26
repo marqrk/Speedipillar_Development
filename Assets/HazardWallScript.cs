@@ -7,6 +7,7 @@ public class HazardWallScript : MonoBehaviour
     public GameObject player;
     public GameObject deathButton;
     public GameObject failure;
+    public GameObject returnLvl;
     // Start is called before the first frame update
 
     BasicPlayerMovement move = null;
@@ -21,7 +22,8 @@ public class HazardWallScript : MonoBehaviour
         if(collide.gameObject.name == player.name)
         {
             deathButton.SetActive(true);
-            failure.SetActive(true);   
+            failure.SetActive(true);
+            returnLvl.SetActive(true);
             move.AliveState = 2;
         }
     }

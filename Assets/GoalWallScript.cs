@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GoalWallScript : MonoBehaviour
 {
+    public GameObject jsonHandlerObj;
+    private JsonHandlerScript json;
     public GameObject player;
     public GameObject goalButton;
     public GameObject nextLevelButton;
@@ -12,10 +14,13 @@ public class GoalWallScript : MonoBehaviour
     // Start is called before the first frame update
     BasicPlayerMovement move = null;
 
+    public int CurrentLevel;
+
     void Start()
     {
         move = player.GetComponent<BasicPlayerMovement>();
 
+        json = jsonHandlerObj.GetComponent<JsonHandlerScript>();
     }
 
     // Update is called once per frame
@@ -28,6 +33,8 @@ public class GoalWallScript : MonoBehaviour
             nextLevelButton.SetActive(true);
             LvlSelectButton.SetActive(true);
             move.AliveState = 3;
+
+            json.UpdatePlayerSave(CurrentLevel);
         }
     }
 }
