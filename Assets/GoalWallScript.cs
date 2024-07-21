@@ -33,6 +33,8 @@ public class GoalWallScript : MonoBehaviour
             nextLevelButton.SetActive(true);
             LvlSelectButton.SetActive(true);
             move.AliveState = 3;
+            move.animator.SetInteger("AliveState", 3);
+
 
             json.UpdatePlayerSave(CurrentLevel);
         }

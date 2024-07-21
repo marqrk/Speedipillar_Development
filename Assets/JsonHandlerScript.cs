@@ -22,6 +22,7 @@ public class JsonHandlerScript : MonoBehaviour
         public bool Level5Finished;
         public bool Level6Finished;
         public bool Level7Finished;
+        public bool Level8Finished;
     }
 
     public PlayerSettings playerSettings = new PlayerSettings();
@@ -70,6 +71,9 @@ public class JsonHandlerScript : MonoBehaviour
                 break;
             case 7:
                 playerSave.Level7Finished = true;
+                break;
+            case 8:
+                playerSave.Level8Finished = true;
                 break;
         }
 

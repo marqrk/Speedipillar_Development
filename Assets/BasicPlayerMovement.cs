@@ -12,6 +12,12 @@ public class BasicPlayerMovement : MonoBehaviour
     public float baseSpeed = 5.0f;
     public float gravity;
 
+    public float jumpSpeed;
+
+    public Animator animator;
+    public GameObject topParent;
+    public int aliveVal;
+
     public GameObject ControlStick;
     public GameObject ControlStickBG;
 
@@ -24,6 +30,8 @@ public class BasicPlayerMovement : MonoBehaviour
     public GameObject JsonHandler;
 
     public bool usingStick;
+
+    Quaternion lastFacingDir;
 
     // Start is called before the first frame update
     void Start()
@@ -42,7 +50,12 @@ public class BasicPlayerMovement : MonoBehaviour
             ControlStick.SetActive(false);
             ControlStickBG.SetActive(false);
         }
-    }
+
+        animator = topParent.GetComponent<Animator>();
+        aliveVal = animator.GetInteger("AliveState");
+
+        lastFacingDir = transform.rotation;
+}
 
     public void LevelSelect() { SceneManager.LoadScene(2); }
     public void HazardDeath()
@@ -66,6 +79,7 @@ public class BasicPlayerMovement : MonoBehaviour
         }
         else
         {
+
             if (usingStick)
             {
                 switch (AliveState)
@@ -73,7 +87,9 @@ public class BasicPlayerMovement : MonoBehaviour
                     case 0:
                         if (Input.touchCount > 0)
                         {
+                            cubeRigibody.rotation = Quaternion.Euler(0, cubeRigibody.rotation.y, 0);
                             AliveState = 1;
+                            animator.SetInteger("AliveState", 1);
                             levelName.SetActive(false);
                         }
                         break;
@@ -81,18 +97,24 @@ public class BasicPlayerMovement : MonoBehaviour
                         if (transform.position.y < -50)
                         {
                             AliveState = 2;
+                            animator.SetInteger("AliveState", 2);
+
+
                             HazardDeath();
                             break;
                         }
                         else
                         {
+                            
                             //Movement for Controlstick handled in ControlStickScript.cs
                             break;
                         }
                     case 2:
                         cubeRigibody.constraints = RigidbodyConstraints.None;
+                        animator.SetInteger("AliveState", 2);
                         break;
                     case 3:
+                        animator.SetInteger("AliveState", 0);
                         break;
                     case 4:
                         if (cubeRigibody.velocity.magnitude < speed)
@@ -109,7 +131,9 @@ public class BasicPlayerMovement : MonoBehaviour
                     case 0:
                         if (Input.touchCount > 0)
                         {
+                            cubeRigibody.rotation = Quaternion.Euler(0, cubeRigibody.rotation.y, 0);
                             AliveState = 1;
+                            animator.SetInteger("AliveState", 1);
                             levelName.SetActive(false);
                         }
                         break;
@@ -117,6 +141,8 @@ public class BasicPlayerMovement : MonoBehaviour
                         if (transform.position.y < -50)
                         {
                             AliveState = 2;
+                            animator.SetInteger("AliveState", 2);
+
                             HazardDeath();
                             break;
                         }
@@ -147,11 +173,18 @@ public class BasicPlayerMovement : MonoBehaviour
                                 cubeRigibody.transform.rotation = Quaternion.Euler(rotation.x, rotation.y, rotation.z);
 
 
+
                                 if (cubeRigibody.velocity.magnitude < speed)
                                 {
+
+                                    if(Quaternion.Angle(transform.rotation, lastFacingDir) > 170 && Quaternion.Angle(transform.rotation, lastFacingDir) < 190){
+                                        cubeRigibody.AddForce(Vector3.up * jumpSpeed);
+                                    }
+                                    
                                     cubeRigibody.AddForce(transform.forward * acceleration);
                                 }
 
+                                lastFacingDir = transform.rotation;
                                 // Might use this later for a gravity changing level
                                 //cubeRigibody.AddForce(Vector3.down * gravity * cubeRigibody.mass);
 
@@ -187,6 +220,8 @@ public class BasicPlayerMovement : MonoBehaviour
                         }
                     case 2:
                         cubeRigibody.constraints = RigidbodyConstraints.None;
+                        animator.SetInteger("AliveState", 0);
+
                         break;
                     case 3:
                         break;

@@ -86,6 +86,7 @@ public class ControlStickScript : MonoBehaviour
                 }
                 else
                 {
+                    
                     if (playerControl.cubeRigibody.velocity.magnitude < playerControl.baseSpeed)
                     {
                         playerControl.cubeRigibody.AddForce(playerControl.transform.forward * playerControl.baseAccel);

@@ -8,7 +8,9 @@ using System.IO;
 public class Level_Select_Functionality : MonoBehaviour
 {
     public GameObject canvas;
-    public const int NumberOfLevels = 7;
+    public const int NumberOfLevels = 8;
+
+    public int CurrentPage = 1;
 
     public void LevelOne() { SceneManager.LoadScene(3); }
     public void LevelTwo() { SceneManager.LoadScene(4); }
@@ -24,14 +26,67 @@ public class Level_Select_Functionality : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        JsonHandlerScript json = GetComponent<JsonHandlerScript>();
+        changePage(1);
+    }
 
-        JsonHandlerScript.PlayerSave playerSave = json.playerSave;
-
-        for (int i = 0; i < NumberOfLevels; i++)
+    public void changePage(int page)
+    {
+        switch (page)
         {
-            bool temp = GetLevelData(i + 1, playerSave);
-            canvas.transform.GetChild(i + 11).gameObject.SetActive(temp);
+            case 1:
+                for (int i = 0; i < NumberOfLevels; i++)
+                {
+                    if (i < 7)
+                    {
+                        JsonHandlerScript json = GetComponent<JsonHandlerScript>();
+
+                        JsonHandlerScript.PlayerSave playerSave = json.playerSave;
+
+                        canvas.transform.GetChild(i + 3).gameObject.SetActive(true);
+
+                        canvas.transform.GetChild(i + 12).gameObject.SetActive(GetLevelData(i + 1, playerSave));
+
+                    }
+                    else if (i >= 7 && i < NumberOfLevels)
+
+                    {
+                        JsonHandlerScript json = GetComponent<JsonHandlerScript>();
+
+                        JsonHandlerScript.PlayerSave playerSave = json.playerSave;
+
+                        canvas.transform.GetChild(i + 3).gameObject.SetActive(false);
+
+                        canvas.transform.GetChild(i + 12).gameObject.SetActive(false);
+
+                    }
+                }
+                break;
+            case 2:
+                for (int i = 0; i < NumberOfLevels; i++)
+                {
+                    if (i < 7)
+                    {
+                        JsonHandlerScript json = GetComponent<JsonHandlerScript>();
+
+                        JsonHandlerScript.PlayerSave playerSave = json.playerSave;
+
+                        canvas.transform.GetChild(i + 3).gameObject.SetActive(false);
+                        canvas.transform.GetChild(i + 12).gameObject.SetActive(false);
+
+                    }
+                    else if (i >= 7 && i < NumberOfLevels)
+                    {
+                        JsonHandlerScript json = GetComponent<JsonHandlerScript>();
+
+                        JsonHandlerScript.PlayerSave playerSave = json.playerSave;
+
+                        canvas.transform.GetChild(i + 3).gameObject.SetActive(true);
+                        canvas.transform.GetChild(i + 12).gameObject.SetActive(GetLevelData(i + 1, playerSave));
+
+                    }
+                }
+                break;
+
         }
     }
 
@@ -53,6 +108,8 @@ public class Level_Select_Functionality : MonoBehaviour
                 return saveData.Level6Finished;
             case 7:
                 return saveData.Level7Finished;
+            case 8:
+                return saveData.Level8Finished;
         }
         return false;
     }

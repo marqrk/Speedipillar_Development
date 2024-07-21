@@ -10,7 +10,7 @@ public class HazardWallScript : MonoBehaviour
     public GameObject returnLvl;
     // Start is called before the first frame update
 
-    BasicPlayerMovement move = null;
+    public BasicPlayerMovement move = null;
     void Start()
     {
         move = player.GetComponent<BasicPlayerMovement>();
@@ -24,16 +24,19 @@ public class HazardWallScript : MonoBehaviour
             deathButton.SetActive(true);
             failure.SetActive(true);
             returnLvl.SetActive(true);
+            move.animator.SetInteger("AliveState", 2);
+
             move.AliveState = 2;
         }
     }
     private void OnTriggerEnter(Collider other)
     {
-     if(other.gameObject.name == player.name)
+        if (other.gameObject.name == player.name)
         {
             deathButton.SetActive(true);
             failure.SetActive(true);
+            returnLvl.SetActive(true);
             move.AliveState = 2;
-        }   
+        }
     }
 }
